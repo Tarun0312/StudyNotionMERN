@@ -39,7 +39,7 @@ const ExploreMore = () => {
       </div>
 
       {/* Tabs Section */}
-      <div className="flex gap-5 -mt-5 mx-auto w-max bg-richblack-800 text-richblack-200 p-1 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
+      <div className="flex gap-5 -mt-5 mx-auto w-max bg-richblack-800 text-richblack-200 p-2 rounded-full font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)] py-2">
         {tabsName.map((ele, index) => {
           return (
             <div
