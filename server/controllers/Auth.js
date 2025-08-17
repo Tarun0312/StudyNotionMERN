@@ -40,7 +40,7 @@ exports.sendOTP = async (req, res) => {
         const userExist = await User.findOne({ email });
         if (userExist) {
             //user already exist ,so no need for signup
-            return res.status(403).json({
+            return res.status(200).json({
                 success: false,
                 message: "User is already registered"
             })
@@ -104,13 +104,14 @@ exports.signUp = async (req, res) => {
             email,
             password,
             confirmPassword,
+            countryCode,
             contactNumber,
             accountType,
             otp,
          } = req.body;
 
         //perform validation on signup data
-        if (!firstName || !lastName || !email || !password || !confirmPassword || !contactNumber || !otp) {
+        if (!firstName || !lastName || !email || !password || !confirmPassword || !countryCode || !contactNumber || !otp) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required"
@@ -173,6 +174,7 @@ exports.signUp = async (req, res) => {
                 lastName,
                 email,
                 password: hashedPassword,
+                countryCode,
                 contactNumber,
                 accountType,
                 additionalDetails: profileDetails._id,

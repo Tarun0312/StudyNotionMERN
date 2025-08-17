@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
   imageUrl : {
     type : String,
   },
+  countryCode :{
+    type:String,
+    required:true
+  },
   contactNumber : {
     type : Number,
     required : true,
