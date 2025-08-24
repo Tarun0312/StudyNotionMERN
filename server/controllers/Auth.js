@@ -40,7 +40,7 @@ exports.sendOTP = async (req, res) => {
         const userExist = await User.findOne({ email });
         if (userExist) {
             //user already exist ,so no need for signup
-            return res.status(200).json({
+            return res.status(400).json({
                 success: false,
                 message: "User is already registered"
             })
@@ -145,7 +145,7 @@ exports.signUp = async (req, res) => {
         if (recentOTP.length == 0) {
             return res.status(400).json({
                 success: false,
-                message: "OTP not found"
+                message: "OTP Expired.Regenerate the OTP"
             });
         } else if (otp !== recentOTP[0].otp) {
             return res.status(401).json({
