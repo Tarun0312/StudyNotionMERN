@@ -58,7 +58,7 @@ exports.courseEnrollmentEmail = (firstName,lastName,courseName) => {
 <body>
     <div class="container">
 
-        <a href=""><img id="logo" src="https://i.ibb.co/7Xyj3PC/logo.png"
+        <a href=""><img id="logo" src="https://i.ibb.co/5gZ5B9HL/Logo-Full-Dark.png"
                 alt="StudyNotion Logo"></a>
 
         <div class="body">

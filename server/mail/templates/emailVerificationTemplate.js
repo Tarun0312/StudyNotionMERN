@@ -44,7 +44,7 @@ const emailVerificationTemplate = (otp) => {
     <body>
         <div class="container">
     
-            <a href="" ><img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"/></a>
+            <a href="" ><img class="logo" src="https://i.ibb.co/5gZ5B9HL/Logo-Full-Dark.png" alt="StudyNotion Logo"/></a>
         
            
             <h3>OTP Verification Email</h3>
