@@ -131,7 +131,7 @@ exports.signUp = async (req, res) => {
         if (userExist) {
             return res.status(403).json({
                 success: false,
-                message: "Email already exists.Go to login page"
+                message: "Email already exists"
                 //we can use redirection message
             })
         }
@@ -145,12 +145,12 @@ exports.signUp = async (req, res) => {
         if (recentOTP.length == 0) {
             return res.status(400).json({
                 success: false,
-                message: "OTP Expired.Regenerate the OTP"
+                message: "OTP Expired"
             });
         } else if (otp !== recentOTP[0].otp) {
-            return res.status(401).json({
+            return res.status(400).json({
                 success: false,
-                message: "Wrong OTP entered by user "
+                message: "Invalid OTP"
             });
         } 
             //now it is a new user and otp validated successfully
@@ -187,7 +187,7 @@ exports.signUp = async (req, res) => {
             return res.status(201).json({
                 success: true,
                 user,
-                message: "New entry of user in Database"
+                message: "Signup Successful"
             });
 
     } catch (error) {
@@ -222,7 +222,7 @@ exports.login = async (req, res) => {
         if (!userExist) {
             return res.status(401).json({
                 success: false,
-                message: "Email not exists,First signup before login"
+                message: "User does not exist"
             })
         }
 
