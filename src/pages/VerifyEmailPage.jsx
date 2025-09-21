@@ -71,7 +71,7 @@ const VerifyEmailPage = () => {
     if(!signupData){
         navigate('/')
     }
-  },[signupData])
+  },[signupData,navigate])
 
   return (
    
@@ -80,7 +80,7 @@ const VerifyEmailPage = () => {
             loading ?
             (<Loader></Loader>) :
             (<div className='h-[calc(100vh-56px)] w-[100vw] flex items-center justify-center'>
-                <div className='p-4 flex flex-col gap-5 w-10/12 md:w-5/12 lg:w-4/12 xl:w-3/12'>
+                <div className='p-4 flex flex-col gap-5 w-10/12 md:w-6/12 lg:w-5/12 xl:w-4/12'>
 
                     <div className='flex flex-col gap-3'>
                         <h3 className='font-semibold text-2xl leading-[2.4rem] text-richblack-5'>Verify Email</h3>

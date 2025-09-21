@@ -54,7 +54,7 @@ const UpdatePasswordPage = () => {
                 ?(<Loader/>)
                 :(<div className='h-[calc(100vh-56px)] w-[100vw] flex items-center justify-center'>
 
-                <div className='p-4 flex flex-col gap-5 w-10/12 md:w-5/12 lg:w-4/12 xl:w-3/12'>
+                <div className='p-4 flex flex-col gap-5 w-10/12 md:w-6/12 lg:w-5/12 xl:w-4/12'>
             
                     {/* heading  */}
                     <div className='flex flex-col gap-2'>
@@ -75,7 +75,7 @@ const UpdatePasswordPage = () => {
                         {
                             !passwordUpdated &&
                             (
-                                <div className='flex flex-col gap-2'>
+                                <div className='flex flex-col gap-4'>
                                         <div className='flex flex-col gap-2 relative'>
                                                 <label htmlFor='newPwd' className='text-richblack-5'>New Password <sup className='text-pink-200'>*</sup></label>
                                                 <input
@@ -128,7 +128,7 @@ const UpdatePasswordPage = () => {
                         }
                 
                         {/* button */}
-                        <div className='flex flex-col gap-2'>
+                        <div className='flex flex-col gap-4'>
                                 <button type='submit'
                                     className='bg-yellow-50 text-richblack-900 rounded-md text-center hover:scale-95 transition-all duration-200 w-full p-2'>
                                         {!passwordUpdated ? 'Reset Password' :'Return to login'}

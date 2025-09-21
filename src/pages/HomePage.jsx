@@ -10,6 +10,7 @@ import HighlightText from "../components/core/HomePage/HighlightText"
 import InstructorSection from "../components/core/HomePage/InstructorSection"
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection"
 import TimelineSection from "../components/core/HomePage/TimelineSection"
+import BoxOffice from '../assets/Images/boxoffice.png'
 
 function HomePage() {
   return (
@@ -57,6 +58,8 @@ function HomePage() {
             muted
             loop
             autoPlay
+            preload="auto"
+            poster={BoxOffice}
           >
             <source src={Banner} type="video/mp4" />
           </video>
