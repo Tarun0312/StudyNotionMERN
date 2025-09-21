@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import useSingleToast from "../../../hooks/useSingleToast"
+import { login } from "../../../services/operations/authApi"
 
 
 function LoginForm() {
@@ -14,6 +17,10 @@ function LoginForm() {
 
   const { email, password } = formData
 
+  const navigate = useNavigate();
+  const {loadingToast,successToast,errorToast} = useSingleToast()
+  const dispatch = useDispatch()
+
   const handleOnChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -22,7 +29,8 @@ function LoginForm() {
   }
 
   const handleOnSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault()  
+    dispatch(login(formData,loadingToast,successToast,errorToast,navigate))
   }
 
   return (
@@ -78,7 +86,7 @@ function LoginForm() {
       </label>
       <button
         type="submit"
-        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+        className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900 hover:scale-95 transition-all duration-200"
       >
         Sign In
       </button>

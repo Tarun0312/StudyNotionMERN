@@ -4,39 +4,22 @@ import StudyNotionLogo from '../../assets/Logo/Logo-Full-Light.png';
 import { NavbarLinks } from '../../data/navbar-links';
 import {useSelector} from 'react-redux'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import * as Constants from '../../constants/index';
+import * as Constants from '../../utils/index';
 import ProfileDropDown from '../core/Auth/ProfileDropDown';
 import { apiConnector } from '../../services/apiConnector';
 import { categories } from '../../services/serviceName';
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
-// const subCategories = [
-//     {
-//         title:"Python",
-//         path:"catalog/python"
-//     },
-//     {
-//         title:"Web Dev",
-//         path:"catalog/web-dev"
-//     },
-//     {
-//         title:"App Dev",
-//         path:"catalog/app-dev"
-//     },
-//     {
-//         title:"Devops",
-//         path:"catalog/devops"
-//     },
-
-// ]
 
 const Navbar = () => {
 
 
     const {token} = useSelector((state) => state.auth)
-    const {user} = useSelector((state) => state.profile)
     const {totalItems} = useSelector((state) => state.cart)
     const [subCategories,setSubCategories] = useState([]);
+
+    const loggedInUser = localStorage.getItem("loginResponse") ?
+    JSON.parse(localStorage.getItem("loginResponse")) : null;
 
     const fetchSubCategories = async () => {
         try{
@@ -150,10 +133,10 @@ const Navbar = () => {
                 {/* cart icon shows after login and if user is not instructor */}
                 
                 {
-                    token && user?.accountType !== Constants.INSTRUCTOR  && 
+                    token && loggedInUser?.accountType !== Constants.INSTRUCTOR  && 
                     (
                         <Link to='/dashboard/cart' className='relative'>
-                        <AiOutlineShoppingCart className='text-2xl'/>
+                        <AiOutlineShoppingCart className='text-2xl text-richblack-25'/>
                         {
                             totalItems > 0 && (
                                 <span className='absolute right-[-20%] top-[-30%] text-sm bg-richblack-500 rounded-[50%] w-[20px] h-[20px] flex justify-center items-center animate-bounce transition-all duration-200'>{totalItems}</span>
@@ -188,7 +171,7 @@ const Navbar = () => {
                 {/* profile dropdown shows after login  */}
                 {
                  token &&  (
-                        <ProfileDropDown imageUrl={user?.imageUrl} />
+                        <ProfileDropDown imageUrl={loggedInUser?.imageUrl} />
                     )
                 }
 

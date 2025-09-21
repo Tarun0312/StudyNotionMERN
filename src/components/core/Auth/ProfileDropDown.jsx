@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { RxDashboard } from "react-icons/rx";
 import { TbLogout2 } from "react-icons/tb";
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import useSingleToast from '../../../hooks/useSingleToast';
+import { logout } from '../../../services/operations/authApi';
 
 const ProfileDropDown = ({imageUrl}) => {
   const [openDropDown,setOpenDropDown]=useState(false);
@@ -19,6 +22,8 @@ const ProfileDropDown = ({imageUrl}) => {
     return () => document.addEventListener('mousedown',clickOutsideOfProfileDropDown);
   },[]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {successToast} = useSingleToast()
 
   const goToDashboard = () => {
     setOpenDropDown(false)
@@ -26,9 +31,8 @@ const ProfileDropDown = ({imageUrl}) => {
   }
 
   const logoutUser = () => {
-
     setOpenDropDown(false);
-    navigate('/')
+    dispatch(logout(successToast,navigate))
   }
 
   
